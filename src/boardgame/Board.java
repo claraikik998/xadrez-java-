@@ -29,5 +29,12 @@ public class Board {
         this.columns = columns;
     }
 
-    
+    //me retorna a peça que esta na linha e coluna que eu passar
+   public Piece piece(int row, int column) {
+       return pieces[row][column];
+   }
+   //retornar a peça pela posicção
+    public Piece piece(Position position) {
+        return pieces[position.getRow()][position.getColumn()];
+    }
 }

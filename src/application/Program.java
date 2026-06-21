@@ -1,15 +1,13 @@
 package application;
 
-import boardgame.Board;
-import boardgame.Position;
+
+import chess.ChessMatch;
 
 public class Program {
     public static void main(String[] args) {
 
-        Board board = new Board(8, 8);
-
-        System.out.println(board.getColumns());
-        System.out.println(board.getRows());
-
+        ChessMatch chessMatch = new ChessMatch();
+       //funçao para mostrar o tabuleiro
+        UI.printBoard(chessMatch.getPieces());
     }
 }

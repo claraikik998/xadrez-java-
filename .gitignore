@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ignorar arquivos compilados do Java
 *.class
 bin/
@@ -8,3 +9,29 @@ bin/
 # Ignorar arquivos do sistema operacional
 .DS_Store
 Thumbs.db
+=======
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+>>>>>>> 7765307c194466526fa0cfcc19c25f3f7116c4bc

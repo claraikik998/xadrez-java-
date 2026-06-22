@@ -1,7 +1,10 @@
 package application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import chess.Color;
 import chess.chesspiece; 
+import chess.ChessPosition;
 
 public class UI {
     
@@ -28,6 +31,19 @@ public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 public static final String ANSI_PINK_BACKGROUND = "\u001B[48;5;205m"; // cor rosa de fundo
 
+
+public static ChessPosition readChessPosition(Scanner sc) {
+   try{
+        String s = sc.nextLine();
+        char column = s.charAt(0);
+        int row = Integer.parseInt(s.substring(1));
+        return new ChessPosition(column, row);
+    }
+    catch (RuntimeException e) {
+        throw new InputMismatchException("Erro!! Valores válidos são de a1 até h8.");
+        //uma exeção que ja tem no java
+    }
+}
     public static void printBoard(chesspiece[][] pieces) {
         // parte do desenho do tabuleiro
 
@@ -56,6 +72,5 @@ public static final String ANSI_PINK_BACKGROUND = "\u001B[48;5;205m"; // cor ros
         }
         System.out.print(" ");
     }
-
 
 }

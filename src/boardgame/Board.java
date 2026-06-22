@@ -51,6 +51,20 @@ public class Board {
         pieces[position.getRow()][position.getColumn()] = piece;
         piece.position = position;
     }
+      //fazer o nosso movie 
+    public Piece removePiece(Position position) {
+        if (!positionExists(position)) {
+            throw new BoardException("posição não existe no tabuleiro");
+        }
+        if (piece(position) == null) {
+            return null;// nao tem peça nesaa posição
+        }
+        Piece aux = piece(position);
+        aux.position = null; //tira a peça do tabuleiro
+        pieces[position.getRow()][position.getColumn()] = null; //tira a peça da matriz
+        return aux;
+    }
+
 
     public boolean positionExists(int row, int column) {
         //verificar se a posição existe no tabuleiro

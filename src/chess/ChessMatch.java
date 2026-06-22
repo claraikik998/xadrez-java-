@@ -2,10 +2,9 @@ package chess;
 
 
 import boardgame.Board;
-import boardgame.Position;
 import chess.pieceschess.Rook;
 import chess.pieceschess.king;
-;
+
 
 public class ChessMatch {
     
@@ -30,12 +29,20 @@ public chesspiece[][] getPieces() {
     }
     return mat;
 }
+
+private void placeNewPiece(char column, int row, chesspiece piece) {
+    //colocar nova peça no tabuleiro
+    board.placePiece(piece, new ChessPosition(column, row).toPosition());
+}
+
+
   private void initialSetup() {
     //colocar as peças no tabuleiro
    
-    board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
-    board.placePiece(new king(board, Color.BLACK), new Position(0, 4));
-    board.placePiece(new king(board, Color.WHITE), new Position(7, 4));
+    placeNewPiece('b', 6, new Rook(board, Color.WHITE));
+    placeNewPiece('e', 8, new king(board, Color.BLACK));
+    placeNewPiece('e', 1, new king(board, Color.WHITE));
 
   }
+
 }

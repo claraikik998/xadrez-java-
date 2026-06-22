@@ -16,4 +16,11 @@ public class Rook extends chesspiece {
         //para aparecer a letra r da torre
     }
     
+
+     @Override
+    public boolean[][] possibleMoves() {
+       boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+        return mat;
+    }
+    
 }

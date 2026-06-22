@@ -15,5 +15,11 @@ public class king extends chesspiece {
         return "K";
         //para aparecer a letra k do rei
     }
+
+    @Override
+    public boolean[][] possibleMoves() {
+       boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+        return mat;
+    }
     
 }

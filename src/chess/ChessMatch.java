@@ -3,10 +3,9 @@ package chess;
 
 import boardgame.Board;
 import boardgame.Position;
-import chess.Color;
 import chess.pieceschess.Rook;
 import chess.pieceschess.king;
-
+;
 
 public class ChessMatch {
     
@@ -20,11 +19,12 @@ public ChessMatch() {
 }
 
 public chesspiece[][] getPieces() {
-//retorna matriz de peças do meu xadrez
+    // retorna matriz de peças do meu xadrez
     chesspiece[][] mat = new chesspiece[board.getRows()][board.getColumns()];
 
-    for (int i=0; i<board.getRows(); i++) {
-        for (int j=0; j<board.getColumns(); j++) {
+    for (int i = 0; i < board.getRows(); i++) {
+        for (int j = 0; j < board.getColumns(); j++) {
+            // Usa o método piece da sua variável board
             mat[i][j] = (chesspiece) board.piece(i, j);
         }
     }
@@ -32,8 +32,10 @@ public chesspiece[][] getPieces() {
 }
   private void initialSetup() {
     //colocar as peças no tabuleiro
+   
     board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
     board.placePiece(new king(board, Color.BLACK), new Position(0, 4));
+    board.placePiece(new king(board, Color.WHITE), new Position(7, 4));
 
   }
 }

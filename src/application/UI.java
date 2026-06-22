@@ -58,16 +58,34 @@ public static ChessPosition readChessPosition(Scanner sc) {
         for (int i = 0; i < pieces.length; i++) {
             System.out.print((8 - i) + " "); // imprime 8-
             for (int j = 0; j < pieces.length; j++) {
-                printPiece(pieces[i][j]); //imrprime 8---------
+                printPiece(pieces[i][j], false); //imrprime 8---------
             }
             System.out.println(); // pula ---S
         } 
         System.out.println("  a b c d e f g h");
     } 
+   
+    public static void printBoard(chesspiece[][] pieces, boolean [][] possibleMoves) {
+            // parte do desenho do tabuleiro
 
-    private static void printPiece(chesspiece piece) { // ou ChessPiece dependendo de como você escreveu
+            for (int i = 0; i < pieces.length; i++) {
+                System.out.print((8 - i) + " "); // imprime 8-
+                for (int j = 0; j < pieces.length; j++) {
+                    printPiece(pieces[i][j], possibleMoves[i][j] ); //imrprime 8---------
+                }
+                System.out.println(); // pula ---S
+            } 
+            System.out.println("  a b c d e f g h");
+        } 
+
+
+
+   private static void printPiece(chesspiece piece, boolean background) { // ou ChessPiece dependendo de como você escreveu
+        if(background){
+            System.out.print(ANSI_PINK_BACKGROUND);
+        }
         if (piece == null) {
-            System.out.print("-");
+            System.out.print("-" + ANSI_RESET); //  Adicionado o ANSI_RESET aqui para limpar o fundo rosa nos espaços vazios
         }
         else {
             if (piece.getColor() == Color.WHITE) {

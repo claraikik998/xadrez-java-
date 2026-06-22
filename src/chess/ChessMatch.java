@@ -37,6 +37,7 @@ public chesspiece performChessMove(ChessPosition sourcePosition, ChessPosition t
     Position source = sourcePosition.toPosition();
     Position target = targetPosition.toPosition();
     validateSourcePosition(source);//ver se nessa posição tinha peça mesmo
+    validateTargetPosition(source, target);//ver se a peça pode ir para essa posição
     Piece capturedPiece = makeMove(source, target);
     return (chesspiece) capturedPiece; // Usando a variável para sumir o aviso amarelo!
 }
@@ -61,6 +62,12 @@ public void validateSourcePosition(Position position) {
     }
 }
 
+private void validateTargetPosition(Position source, Position target) {
+    //verificar se a posição de destino é valida
+    if (!board.piece(source).possibleMove(target)) {
+        throw new ChessException("A peça escolhida não pode se mover para a posição de destino");
+    }
+}
 
 private void placeNewPiece(char column, int row, chesspiece piece) {
     //colocar nova peça no tabuleiro

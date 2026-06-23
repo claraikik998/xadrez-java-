@@ -66,7 +66,7 @@ public class Board {
     }
 
 
-    public boolean positionExists(int row, int column) {
+    private boolean positionExists(int row, int column) {
         //verificar se a posição existe no tabuleiro
         return row >= 0 && row < rows && column >= 0 && column < columns;
     }
@@ -82,7 +82,6 @@ public class Board {
         return piece(position) != null;
     }
 }
-
 
 
 

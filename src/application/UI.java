@@ -2,9 +2,11 @@ package application;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.List;
 import chess.Color;
 import chess.chesspiece; 
 import chess.ChessPosition;
+import chess.ChessMatch;
 
 public class UI {
     
@@ -37,8 +39,6 @@ public static void clearScreen() {
     System.out.print("\033[H\033[2J");
     System.out.flush();
 } 
-
-
 
 public static ChessPosition readChessPosition(Scanner sc) {
    try{
@@ -78,7 +78,22 @@ public static ChessPosition readChessPosition(Scanner sc) {
             System.out.println("  a b c d e f g h");
         } 
 
-
+    public static void printMatch(ChessMatch chessMatch, List<chesspiece> captured) {
+        printBoard(chessMatch.getPieces());
+        System.out.println();
+        printCapturedPieces(captured);
+        System.out.println();
+        System.out.println("Turno: " + chessMatch.getTurn());
+        if (!chessMatch.getCheckMate()) {
+            System.out.println("Aguardando jogador: " + chessMatch.getCurrentPlayer());
+            if (chessMatch.getCheck()) {
+                System.out.println("XEQUE!");
+            }
+        } else {
+            System.out.println("XEQUE-MATE!");
+            System.out.println("Vencedor: " + chessMatch.getCurrentPlayer());
+        }
+    }
 
    private static void printPiece(chesspiece piece, boolean background) { // ou ChessPiece dependendo de como você escreveu
         if(background){
@@ -99,4 +114,15 @@ public static ChessPosition readChessPosition(Scanner sc) {
         System.out.print(" ");
     }
 
+    private static void printCapturedPieces(List<chesspiece> captured) {
+        List<chesspiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).toList();
+        List<chesspiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).toList();
+        System.out.println("Peças capturadas:");
+        System.out.print("Brancas: " + ANSI_WHITE);
+        System.out.print(white);
+        System.out.println(ANSI_RESET);
+        System.out.print("Rosas: " + ANSI_PINK);
+        System.out.print(black);
+        System.out.println(ANSI_RESET);
+    }
 }

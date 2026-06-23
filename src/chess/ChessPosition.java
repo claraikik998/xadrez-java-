@@ -27,20 +27,18 @@ public class ChessPosition {
     }
  //matriz_row = 8 - chess_row
  //matriz_column = chess_column - 'a'
-protected Position toPosition() {
+public Position toPosition() {
     return new Position(8 - row, column - 'a');
 }  
 
- protected static ChessPosition fromPosition(Position position) {
+public static ChessPosition fromPosition(Position position) {
     return new ChessPosition((char) ('a' + position.getColumn()), 8 - position.getRow());
 
- }
+}
  @Override
  public String toString() {
      return "" + column + row;
      // '' para concatenar o char com o int e imprimir na tela
  }
-
-
 
 }
